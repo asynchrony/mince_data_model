@@ -5,11 +5,11 @@ require "mince_data_model/version"
 Gem::Specification.new do |s|
   s.name        = "mince_data_model"
   s.version     = MinceDataModel::VERSION
-  s.authors     = ["Jason & Matt (Asynchrony)"]
-  s.email       = ["dev@asolutions.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.authors     = ["Jason Mayer", "Matt Simpson", "Asynchrony Solutions"]
+  s.email       = ["matt@railsgrammer.com", "jason.mayer@gmail.com"]
+  s.homepage    = "https://github.com/asynchrony/mince_data_model"
+  s.summary     = %q{Interface for interchanging which type of data store to persist data to}
+  s.description = %q{Interface for interchanging which type of data store to persist data to}
 
   s.rubyforge_project = "mince_data_model"
 
