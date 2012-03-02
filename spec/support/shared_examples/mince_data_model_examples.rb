@@ -1,5 +1,4 @@
 require 'digest'
-require_relative '../../../lib/mince_data_model'
 
 shared_examples_for 'a data model' do
   let(:mock_data_store) { mock 'data store data model' }
