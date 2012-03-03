@@ -95,12 +95,11 @@ shared_examples_for 'a data model' do
     let(:expected_data_models) { [{:id => 'some id', primary_key => 'some id'}] }
     let(:mock_data_models) { [mock_data_model] }
     let(:expected_data_models) { [HashWithIndifferentAccess.new(mock_data_model)] }
-    let(:sample_hash) { {field1: nil, field2: 'not nil'} }
 
     it 'passes the hash to the mock_data_store_class' do
-      mock_data_store.should_receive(:get_by_params).with(collection_name, sample_hash).and_return(mock_data_models)
+      mock_data_store.should_receive(:get_all_for_key_with_value).with(collection_name, :field2, 'not nil').and_return(mock_data_models)
 
-      described_class.all_by_fields(sample_hash).should == expected_data_models
+      described_class.all_by_field(:field2, 'not nil').should == expected_data_models
     end
   end
 
@@ -128,6 +127,17 @@ shared_examples_for 'a data model' do
       mock_data_store.should_receive(:containing_any).with(collection_name, :some_field, ['value 1', 'value 2']).and_return(mock_data_models)
 
       subject.should == expected_data_models
+    end
+  end
+
+  describe "getting a record by a key and value" do
+    let(:mock_data_model) { {primary_key => 'some id'} }
+    let(:expected_data_model) { {:id => 'some id', primary_key => 'some id'} }
+
+    it 'returns the correct data model' do
+      mock_data_store.should_receive(:get_for_key_with_value).with(collection_name, :field2, 'not nil').and_return(mock_data_model)
+
+      described_class.find_by_field(:field2, 'not nil').should == HashWithIndifferentAccess.new(expected_data_model)
     end
   end
 

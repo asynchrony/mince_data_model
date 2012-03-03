@@ -67,7 +67,11 @@ module MinceDataModel
 
     def find_by_fields(hash)
       translate_from_data_store all_by_fields(hash).first
-    end
+    end                 
+
+    def find_by_field(field, value)
+      translate_from_data_store data_store.instance.get_for_key_with_value(data_collection, field, value)
+    end                 
 
     def containing_any(field, values)
       translate_each_from_data_store data_store.instance.containing_any(data_collection, field, values)
