@@ -1,3 +1,20 @@
+# How To Use
+
+In your data model:
+
+```ruby
+require 'mince_data_model'
+
+class TronLightCycleDataModel
+  include MinceDataModel
+  
+  # Name of the collection or table to store the data
+  data_collection :light_cycles
+  
+  # The fields or columns this data model can have
+  data_fields :luminating_color, :rezzed, :jetwall, :grid_locked
+end
+```
 
 # What Iz Mince Data Model?
 
