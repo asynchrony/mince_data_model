@@ -43,7 +43,7 @@ TronLightCycleDataModel.all_by_field(:grid_locked, true)
 TronLightCycleDataModel.all_by_fields(grid_locked: true, luminating_color: 'red')
 ```
 
-There are also other [ways to set the data store](ways to set the data store)
+There are also other [ways to set the data store](https://github.com/asynchrony/mince_data_model/wiki/ways-to-set-the-data-store)
 
 # Why?
 
