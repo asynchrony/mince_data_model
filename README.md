@@ -1,10 +1,20 @@
+# What Iz Mince Data Model?
+
+Mince Data Model provides the ability to switch between different databases for different environments.
+
+It supports the following data stores:
+
+- [mince_dynamo_db](https://github.com/coffeencoke/mince_dynamo_db) - Stores and retrieves data from Amazon's DynamoDB
+- [mince](https://github.com/asynchrony/mince) - Stores and retrieves data from MongoDB
+- [hashy_db](https://github.com/asynchrony/hashy_db) - Stores and retrieves data from a hash in-memory.
+
+By creating some niceties and an implementation to swap out different data persistance strategies.  
+
 # How To Use
 
-In your data model:
+## Create a data model class
 
 ```ruby
-require 'mince_data_model'
-
 class TronLightCycleDataModel
   include MinceDataModel
   
@@ -16,9 +26,24 @@ class TronLightCycleDataModel
 end
 ```
 
-# What Iz Mince Data Model?
+## Set the data store to use
 
-Some niceties and defines an implementation to swap out different data persistance strategies.  Currently there are 2 supported data persistance strategies: Mince (MongoDB), and HashyDB (in memory hash). If using this gem, all you need to do in order to change the data persistence strategy is to implement the methods outlined by this gem.  Check out the [Mince Data Store](https://github.com/asynchrony/mince/blob/master/lib/mince/data_store.rb) and the [HashyDB Data Store](https://github.com/asynchrony/HashyDB/blob/master/lib/hashy_db/data_store.rb) for a list of methods to implement.
+```ruby
+Rails.application.config.data_store = 'mince_dynamo_db/data_store'
+```
+You must have the data store gem installed.
+
+## Start storing and retrieving data
+
+```ruby
+TronLightCycleDataModel.store(model)
+TronLightCycleDataModel.find(1)
+TronLightCycleDataModel.all
+TronLightCycleDataModel.all_by_field(:grid_locked, true)
+TronLightCycleDataModel.all_by_fields(grid_locked: true, luminating_color: 'red')
+```
+
+There are also other [ways to set the data store](ways to set the data store)
 
 # Why?
 
@@ -59,3 +84,12 @@ The motivation behind this is so you can clone the repository down, have ruby in
 
 [@github](https://github.com/asynchrony/hashy_db)
 [@rubygems](https://rubygems.org/gems/hashy_db)
+
+# Mince DynamoDb
+
+Provides an interface for storing and retreiving information in Amazon's DynamoDB.
+
+It's almost impossible to develop an application using DynamoDB in development and even harder to use DynamoDb in a test environment.  This allows you to switch your application to DynamoDB only in production mode.
+
+[@github](https://github.com/coffeencoke/mince_dynamo_db)
+[@rubygems](https://rubygems.org/gems/mince_dynamo_db)
