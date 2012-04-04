@@ -40,6 +40,7 @@ TronLightCycleDataModel.store(model)
 TronLightCycleDataModel.find(1)
 TronLightCycleDataModel.all
 TronLightCycleDataModel.all_by_field(:grid_locked, true)
+TronLightCycleDataModel.update_field_with_value('some_cycle_id_123', :grid_locked, false)
 TronLightCycleDataModel.all_by_fields(grid_locked: true, luminating_color: 'red')
 ```
 
