@@ -45,6 +45,16 @@ shared_examples_for 'a data model' do
     end
   end
 
+  describe 'updating a specific field for a data model' do
+    let(:data_model_id) { '1234567' }
+    
+    it 'has the data store update the field' do
+      mock_data_store.should_receive(:update_field_with_value).with(collection_name, data_model_id, :some_field, 'some value')
+
+      described_class.update_field_with_value(data_model_id, :some_field, 'some value')
+    end
+  end
+
   describe "pushing a value to an array for a data model" do
     let(:data_model_id) { '1234567' }
 

@@ -41,6 +41,10 @@ module MinceDataModel
       end
     end
 
+    def update_field_with_value(id, field, value)
+      data_store.instance.update_field_with_value(data_collection, id, field, value)
+    end
+
     def remove_from_array(id, field, value)
       data_store.instance.remove_from_array(data_collection, data_store.primary_key_identifier, id, field, value)
     end
