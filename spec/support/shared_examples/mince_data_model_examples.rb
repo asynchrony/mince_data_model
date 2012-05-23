@@ -33,9 +33,17 @@ shared_examples_for 'a data model' do
   it 'can delete a field' do
     field = mock 'field to delete from the collection'
 
-    mock_data_store.should_receive(:delete).with(collection_name, field)
+    mock_data_store.should_receive(:delete_field).with(collection_name, field)
 
     described_class.delete_field(field)
+  end
+
+  it 'can delete records by a given set of params' do
+    params = mock 'params that provide a condition of what records to delete from the collection'
+
+    mock_data_store.should_receive(:delete_by_params).with(collection_name, params)
+
+    described_class.delete_by_params(params)
   end
 
   describe "updating a data model" do

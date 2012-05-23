@@ -61,6 +61,10 @@ module MinceDataModel
       data_store.instance.delete_field(data_collection, field)
     end
 
+    def delete_by_params(params)
+      data_store.instance.delete_by_params(data_collection, params)
+    end
+
     def all
       translate_each_from_data_store data_store.instance.find_all(data_collection)
     end
