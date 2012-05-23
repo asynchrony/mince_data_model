@@ -57,6 +57,10 @@ module MinceDataModel
       translate_from_data_store data_store.instance.find(data_collection, data_store.primary_key_identifier, id)
     end
 
+    def delete_field(field)
+      data_store.instance.delete_field(data_collection, field)
+    end
+
     def all
       translate_each_from_data_store data_store.instance.find_all(data_collection)
     end

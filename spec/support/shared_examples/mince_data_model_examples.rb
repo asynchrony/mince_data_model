@@ -30,6 +30,14 @@ shared_examples_for 'a data model' do
     end
   end
 
+  it 'can delete a field' do
+    field = mock 'field to delete from the collection'
+
+    mock_data_store.should_receive(:delete).with(collection_name, field)
+
+    described_class.delete_field(field)
+  end
+
   describe "updating a data model" do
     let(:data_model_id) { '1234567' }
     let(:mock_model) { mock 'a model', id: data_model_id, instance_values: data_field_attributes }
