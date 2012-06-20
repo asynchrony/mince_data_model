@@ -93,6 +93,10 @@ module MinceDataModel
       translate_each_from_data_store data_store.instance.array_contains(data_collection, field, value)
     end
 
+    def delete_collection
+      data_store.instance.delete_collection(data_collection)
+    end
+
     def translate_from_data_store(hash)
       if hash
         hash["id"] = hash[data_store.primary_key_identifier] if hash[data_store.primary_key_identifier]

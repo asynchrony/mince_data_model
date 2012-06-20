@@ -30,6 +30,12 @@ shared_examples_for 'a data model' do
     end
   end
 
+  it 'can delete the collection' do
+    mock_data_store.should_receive(:delete_collection).with(collection_name)
+    
+    described_class.delete_collection
+  end
+
   it 'can delete a field' do
     field = mock 'field to delete from the collection'
 
