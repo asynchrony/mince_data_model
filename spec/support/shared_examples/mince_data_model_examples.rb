@@ -77,6 +77,16 @@ shared_examples_for 'a data model' do
     end
   end
 
+  describe 'incrementing a specific field by a given an amount' do
+    let(:data_model_id) { mock 'id' }
+
+    it 'has the data store update the field' do
+      mock_data_store.should_receive(:increment_field_by_amount).with(collection_name, data_model_id, :some_field, 4)
+
+      described_class.increment_field_by_amount(data_model_id, :some_field, 4)
+    end
+  end
+
   describe "pushing a value to an array for a data model" do
     let(:data_model_id) { '1234567' }
 
