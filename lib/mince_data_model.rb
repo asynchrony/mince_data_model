@@ -103,7 +103,7 @@ module MinceDataModel
 
     def translate_from_data_store(hash)
       if hash
-        hash["id"] = hash[data_store.primary_key_identifier] if hash[data_store.primary_key_identifier]
+        hash["id"] = hash[primary_key_identifier] if hash[primary_key_identifier]
         HashWithIndifferentAccess.new hash
       end
     end
@@ -113,6 +113,10 @@ module MinceDataModel
     end
 
     private
+
+    def primary_key_identifier
+      @primary_key_identifier ||= data_store.primary_key_identifier
+    end
 
     def set_data_collection(collection_name)
       @data_collection = collection_name
