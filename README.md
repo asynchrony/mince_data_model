@@ -1,3 +1,5 @@
+**This gem has been moved to the [mince](https://github.com/coffeencoke/mince) core gem, and this repo is deprecated**
+
 # What Iz Mince Data Model?
 
 Mince Data Model provides the ability to switch between different databases for different environments.
